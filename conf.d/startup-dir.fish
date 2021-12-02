@@ -5,4 +5,9 @@ function set-startup-dir --argument-names dir
   test -d "$dir" && set --universal startup_dir (realpath $dir)
 end
 
-test "$PWD" = "$HOME" -a -n "$startup_dir" && cd "$startup_dir"
+if test "$PWD" = "$HOME" -a -n "$startup_dir"
+  while test ! -d "$startup_dir"
+    set startup_dir (dirname $startup_dir)
+  end
+  cd $startup_dir
+end
