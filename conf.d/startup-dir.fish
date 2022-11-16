@@ -9,5 +9,8 @@ if test "$PWD" = "$HOME" -a -n "$startup_dir"
   while test ! -d "$startup_dir"
     set startup_dir (dirname $startup_dir)
   end
-  cd $startup_dir
+  builtin cd $startup_dir >/dev/null 2>&1
+  if test "$TERM_PROGRAM" = "iTerm.app"
+    builtin cd $startup_dir >/dev/null 2>&1
+  end
 end
