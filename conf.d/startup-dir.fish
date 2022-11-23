@@ -7,7 +7,7 @@ end
 
 if test "$PWD" = "$HOME" -a -n "$startup_dir"
   while test ! -d "$startup_dir"
-    set startup_dir (dirname $startup_dir)
+    set startup_dir (path dirname $startup_dir)
   end
   if test "$TERM_PROGRAM" = "iTerm.app"
     fish -c "builtin cd" >/dev/null 2>&1
